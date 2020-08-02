@@ -1,0 +1,45 @@
+{
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.1.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "converte": "babel www/src -d www/js"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-splashscreen": {},
+      "cordova-universal-links-plugin": {},
+      "cordova-plugin-browsertab": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-androidx": {},
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-buildinfo": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "animate.css": "^4.1.0",
+    "cordova-android": "^8.1.0",
+    "cordova-plugin-androidx": "^1.0.2",
+    "cordova-plugin-androidx-adapter": "^1.1.0",
+    "cordova-plugin-browsertab": "^0.2.0",
+    "cordova-plugin-buildinfo": "^4.0.0",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-inappbrowser": "^3.2.0",
+    "cordova-plugin-splashscreen": "^5.0.3",
+    "cordova-support-android-plugin": "^1.0.2",
+    "cordova-universal-links-plugin-fix": "^1.2.1",
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.0",
+    "jquery": "^3.5.1",
+    "jquery-mask-plugin": "^1.14.16",
+    "leaflet": "^1.6.0",
+    "mdbootstrap": "^4.19.1",
+    "node-fetch": "^2.6.0"
+  }
+}
