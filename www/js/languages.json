@@ -1,0 +1,404 @@
+{
+	"en":{
+		"index-page":{
+			"btn-sign-in":"Sign in/Sign up",
+			"btn-about-us":"About us",
+			"welcome-message":"Welcome to Help, please choose a sign in/sign up method below!",
+			"btn-close":"Close"
+		},
+		"welcome-page":{
+
+			"greetings":"Welcome to our community! Please select below the types of volunteer that interest you so we can finish your registration.",
+			"select-all":"Select All",
+			"teaching":"Teaching",
+			"location":"Location",
+			"sports":"Sports",
+			"shows":"Concerts/Festivals",
+			"games":"Games",
+			"events":"Geek Events",
+			"aniamals":"Animals",
+			"spiritual":"Relegious/Spiritual",
+			"others":"Others",
+			"btn-save":"Save",
+			"btn-logOut":"LogOut",
+			"allow":"Allow it",
+			"alert-message":"Attetion! For we can finish your registration, we need your location, it is essential to use the platform! Please click on the button below to allow us to get your location."
+
+
+		},
+		"mainscreen-page":{
+			"logout":"Log Out",
+			"headline":"Main Screen",
+			"upcoming-events":"Upcoming Events",
+			"events-subscribed":"Events I Am Subscribed",
+			"my-events":"My Events",
+			"register-event":"Register an Event",
+			"about-app":"About This App",
+			"my-profile":"My Profile",
+			"report-error":"Report an Error",
+			"send":"Send",
+			"cancel":"Cancel",
+			"subject":"Subject:",
+			"message":"Message:",
+			"subjectPlaceHolder":"Subject",
+			"messagePlaceHolder":"Please describe the error with as many details as possible.",
+			"modal-headline":"Report Error"
+
+		},
+		"events-page":{
+			"search-event":"Search For an Event",
+			"btn-read-more":"Read More",
+			"btn-share":"Share",
+			"btn-cancel":"Cancel",
+			"subscribe":"subscribe",
+			"unsubscribe":"unsubscribe",
+
+
+			"icones":{
+				"learning":"Learning",
+				"favorites":"Favorites",
+				"location":"Local",
+				"sports":"Sports",
+				"shows":"Concerts",
+				"games":"Games",
+				"events":"Events",
+				"teaching":"Teaching",
+				"animals":"Animals",
+				"spiritual":"Relegious",
+				"others":"Others"
+			}
+
+		},
+		"event-page":{
+			"subscribe":"Subscribe",
+			"unsubscribe":"Unsubscribe",
+			"btn-share":"Share"
+		},
+		"register-event-page":{
+			"register-headline":"Register of Volunteer",
+			"title":"Title",
+			"toast-info":"Please use a ',' or press enter everytime you type a tag!",
+			"description":"description",
+			"zipCode":"Zip Code",
+			"number":"Number",
+			"street":"Street",
+			"city-state":"City-State",
+			"time":"Time",
+			"select-picture":"Select Picture",
+			"btn-save":"Save",
+			"btn-cancel":"Cancel",
+			"titlePlaceHolder":"E.g. Bathing Day",
+			"descriptionPlaceHolder":"Eg: This is an example of how should be your description, please try to be as clear as possible about what your volunteering is about.",
+			"zipPlaceHolder":"",
+			"numberPlaceHolder":"",
+			"streetPlaceHolder":"",
+			"cityPlaceHolder":"City-State",
+			"tags-PlaceHolder":"E.g. Dogs, Cats"
+
+		},
+		"user-dashboard":{
+			"settings":"Settings",
+			"edit-my-info":"Edit My Profile",
+			"edit-my-interests":"Edit My Interests"
+		},
+		"my-interests-page":{
+			"myinterests":"My interests",
+			"select-all":"Select All",
+			"teaching":"Teaching",
+			"location":"Location",
+			"sports":"Sports",
+			"shows":"Concerts/Festivals",
+			"games":"Games",
+			"events":"Geek Events",
+			"aniamals":"Animals",
+			"spiritual":"Relegious/Spiritual",
+			"others":"Others",
+			"btn-save":"Save",
+			"btn-cancel":"Cancel"
+		},
+		"about-page":{
+			"headline":"Start volunteering today!",
+			"about":"This app offers a flexible volunteering model that makes volunteering more convenient. we offer a variety of activities that fit your schedule and interests.",
+			"explore":"Explore our app",
+			"browse":"Browse through our app where you can find voluntering based on your interests, location, date,etc. Making everything easier to find the best volunteers that fits you.",
+			"volunteer":"Volunteers",
+			"events":"events"
+
+		},
+		"edit-user-info":{
+			"register-headline":"My info",
+			"name":"Name:",
+			"tel":"Tel:",
+			"email":"Email",
+			"change-picture":"Change Picture",
+			"save":"Save",
+			"cancel":"Cancel"
+		},
+
+		"notifications":{
+			"not-allowed-to-subscribe":"We are sorry, but you cannot subscribe to an event outside your country.",
+			"subscribed":"All done! Now you just have to wait for the organizer to get in touch with you.",
+			"select-category":"Please select at least one category!",
+			"sent-with-success":"E-mail sent with success!",
+			"updated-with-success":"Updated realized with success!",
+			"saved-with-success":"Saved with success!",
+			"deleted-with-success":"Removed with success!",
+			"you-dont-have-events":"You do not have any event registered yet!",
+			"no-volunteers":"No one subscribed in your volunteering yet!",
+			"no-events":"No events avaiable, please come back later or be the first one to register one volunteering!",
+			"do-you-want-remove":"Are you sure you want to remove this event?",
+			"only-images":"Only images are allowed",
+			"no-events-found":"We could not find any volunteering related to your search.",
+			"get-location-denied":"If don't allow us to get your location you can't proceed with your registration!",
+			"no-geolocation-support":"Geolocation is not supported by this browser.",
+			"error-get-location":"We could not find your location, please try again later!",
+			"location-error":"Operation could not succeed!",
+			"location-allowed-but-there-was-error":"We were unable to access your location, make sure your GPS is enabled, if you have allowed and are still receiving this message, please refresh the page or check your browser's/device's permission settings.",
+			"no-country-support":"We are sorry but you can't either register an event nor search for events because We do not have support for your country yet!"
+			
+		},
+
+		"subscribed":{
+			"unsubscribe":"<span class='fas fa-user-times'></span> Unsubscribe ",
+			"subscribe":"<span class='fas fa-user-plus'></span> Subscribe "
+		},
+		
+		"errors":{
+			"storage/canceled":"Download canceled by the user.",
+			"storage/retry-limit-exceeded":"Limit exceeded! Make sure your device is connected to internet and try again.",
+			"PERMISSION_DENIED":"You don't have access to the database.",
+			"storage/object-not-found":"It was not possible to delete the picture because it was not found in the database"
+		},
+
+		"events-subscribed-page":{
+			"0-subscribed":"You are not subscribed to any event.",
+			"picture":"Picture",
+			"title":"Title",
+			"situation":"Situation",
+			"unsubscribe":"Unsubscribe",
+			"subscribe":"Subscribe",
+			"btn-share":"Share"
+		},
+
+		
+		"my-volunteers":{
+			"picture":"Picture",
+			"name":"Name",
+			"email":"Send e-mail",
+			"send-to-all":"Send e-mail to all",
+			"subject":"Subject:",
+			"message":"Message:",
+			"subjectPlaceHolder":"Eg: Updates for the volunteering",
+			"messagePlaceHolder":"Type your message here",
+			"send":"Send",
+			"close":"Close",
+			"btn-send-email":"Send email",
+			"to":"To"
+
+		}
+		
+		
+	},
+
+	"pt":{
+		"index-page":{
+			"btn-sign-in":"Entrar/Registrar",
+			"btn-about-us":"Sobre nós",
+			"welcome-message":"Bem vindo ao Help, por favor escolha o método de login ou registro abaixo!",
+			"btn-close":"Fechar"
+		},
+		"welcome-page":{
+
+			"greetings":"Bem vindo a nossa comunidade, por favor selecione abaixo as categorias de trabalho voluntário que são do seu interesse, para que possamos terminar seu registro.",
+			"select-all":"Selecionar todos",
+			"teaching":"Ensinar",
+			"location":"Local",
+			"sports":"Esportes",
+			"shows":"Shows/Festivais",
+			"games":"Games",
+			"events":"Eventos Geeks",
+			"aniamals":"animais",
+			"spiritual":"Religioso/Esperitual",
+			"others":"Outros",
+			"btn-save":"Salvar",
+			"btn-logOut":"Sair",
+			"allow":"Permitir",
+			"alert-message":"Atenção! Para que possamos finalizar seu cadastro precisamos da sua localização, é essêncial para o uso da plataforma. Por favor clique no botão abaixo para permitir."
+
+
+		},
+		"mainscreen-page":{
+			"logout":"Sair",
+			"headline":"Menu",
+			"upcoming-events":"Próximos Eventos",
+			"events-subscribed":"Eventos que Estou Inscrito",
+			"my-events":"Meus eventos",
+			"register-event":"Cadastrar um Evento",
+			"about-app":"Sobre esse App",
+			"my-profile":"Meu perfil",
+			"report-error":"Reportar um Erro",
+			"send":"Enviar",
+			"cancel":"Cancelar",
+			"subject":"Assunto:",
+			"message":"Mensagem:",
+			"subjectPlaceHolder":"Assunto",
+			"messagePlaceHolder":"Por favor descreva o erro com o máximo de detalhes possíveis.",
+			"modal-headline":"Relatar Erro"
+
+		},
+		"events-page":{
+			"search-event":"Buscar Evento",
+			"btn-read-more":"Ler mais",
+			"btn-share":"Compartilhar",
+			"btn-cancel":"Cancelar",
+			"subscribe":"Me inscrever",
+			"unsubscribe":"Cancelar inscrição",
+
+
+			"icones":{
+				"learning":"Ensinar",
+				"favorites":"Favoritos",
+				"location":"Local",
+				"sports":"Esportes",
+				"shows":"Shows",
+				"games":"Games",
+				"events":"Eventos",
+				"teaching":"Ensinar",
+				"animals":"Animais",
+				"spiritual":"Religioso",
+				"others":"Outros"
+			}
+
+		},
+		"event-page":{
+			"subscribe":"Me inscrever",
+			"unsubscribe":"Cancelar inscrição",
+			"btn-share":"Compartilhar"
+		},
+		"register-event-page":{
+			"register-headline":"Cadastro de Evento",
+			"title":"Título",
+			"toast-info":"Por favor use uma ',' ou pressione enter depois ter digitado cada tag!",
+			"description":"Descrição",
+			"zipCode":"CEP",
+			"number":"Número",
+			"street":"Rua",
+			"city-state":"Cidade-Estado",
+			"time":"Hora",
+			"select-picture":"Selecionar Foto",
+			"btn-save":"Salvar",
+			"btn-cancel":"Cancelar",
+			"titlePlaceHolder":"Ex: Dia de banho",
+			"descriptionPlaceHolder":"Ex: Este é um exemplo de como a sua descrição deve ser, por favor seja o mais claro possível sobre o que se trata o voluntário",
+			"zipPlaceHolder":"00.000-000",
+			"numberPlaceHolder":"121",
+			"streetPlaceHolder":"Rua exemplo voluntário",
+			"cityPlaceHolder":"Cidade-Estado",
+			"tags-placeholder":"Ex: Gatos, Cachorros"
+			
+
+		},
+		"user-dashboard":{
+			"settings":"Configurações",
+			"edit-my-info":"Editar Meu Perfil",
+			"edit-my-interests":"Editar Meus Interesses"
+		},
+		"my-interests-page":{
+			"myinterests":"Meus Interesses",
+			"select-all":"Selecionar Todos",
+			"teaching":"Ensinar",
+			"location":"Local",
+			"sports":"Esportes",
+			"shows":"Shows/Festivais",
+			"games":"Games",
+			"events":"Eventos Geek",
+			"aniamals":"Animais",
+			"spiritual":"Religioso/Esperitual",
+			"others":"Outros",
+			"btn-save":"Salvar",
+			"btn-cancel":"Cancelar"
+		},
+		"about-page":{
+			"headline":"Comece seu voluntário hoje!",
+			"about":"Esse App oferece um modelo flexível de voluntariado que torna o trabalho voluntário muito mais conveniente para você. Oferecemos uma variedade de eventos que podem te interessar e que cabem na sua agenda.",
+			"explore":"Explore nosso App",
+			"browse":"Navegue pelo nosso aplicativo onde você consegue pesquisar por interesses, localização, data, tornando fácil para você encontrar o trabalho voluntário perfeito para você.",
+			"volunteer":"Voluntários",
+			"events":"Eventos"
+
+		},
+		"edit-user-info":{
+			"register-headline":"Minhas Informações",
+			"name":"Nome:",
+			"tel":"Tel:",
+			"email":"Email",
+			"change-picture":"Mudar Foto",
+			"save":"Salvar",
+			"cancel":"Cancelar"
+		},
+
+		"notifications":{
+			"not-allowed-to-subscribe":"Desculpe, mas você não pode se inscrever em um evento fora do seu país",
+			"subscribed":"Sua inscrição foi realizada com sucesso! Agora é só aguardar o organizador do evento entrar em contato com você.",
+			"select-category":"Por favor selecione ao menos uma categoria!",
+			"sent-with-success":"E-mail enviado com sucesso!",
+			"updated-with-success":"Atualizado com sucesso!",
+			"saved-with-success":"Salvo com sucesso!",
+			"deleted-with-success":"Removido com successo!",
+			"you-dont-have-events":"Você não possui nenhum evento registrado!",
+			"no-volunteers":"Ninguém se inscrevou no seu voluntário ainda!",
+			"only-images":"Apenas imagens são permitidas",
+			"no-events":"Nenhum evendo disponível no momento. Volte mais tarde ou seja o primeiro a registrar!",
+			"do-you-want-remove":"Você tem certeza que deseja remover esse evento?",
+			"no-events-found":"Não conseguimos encontrar nenhum evento relacionado com a sua busca.",
+			"get-location-denied":"Se você não permitir acesso a sua localização, não poderemos procedir com a finalização do seu cadastro!",
+			"no-geolocation-support":"Geolocalização não suportada no seu dispositivo.",
+			"error-get-location":"Não conseguimos encontrar sua localização, por favor tente novamente mais tarde!",
+			"location-error":"Operação sem sucesso!",
+			"location-allowed-but-there-was-error":"Não fomos capazes de encontrar sua localização, certifique-se que o GPS esteja ativo, Se você permitiu acesso a sua localização mas ainda continua recebendo essa mensagem, por favor atualize a página ou cheque as configurações de permissão do seu dispositivo."
+		},
+
+		"subscribed":{
+			"unsubscribe":"<p> <span class='fas fa-user-times'></span> Cancelar inscrição</p>",
+			"subscribe":"<p><span class='fas fa-user-plus'></span> Me inscrever</p> "
+		},
+		
+		"errors":{
+			"storage/unauthorized":"Você não tem permissão para poder deletar esse evento",
+			"storage/canceled":"Download cancelado pelo usuário",
+			"storage/retry-limit-exceeded":"Limite excedido! Certifique-se que o dispositivo estaja com acesso a internet.",
+			"PERMISSION_DENIED":"Você não tem acesso ao banco de dados.",
+			"storage/object-not-found":"Não foi possível excluir o evento porque a foto não foi encontrada no nosso servidor. Por favor relate esse erro para nossa equipe."
+		},
+
+		"events-subscribed-page":{
+			"0-subscribed":"Você não estar inscrito em nenhum evento.",
+			"picture":"Photo",
+			"title":"Titulo",
+			"situation":"Situação",
+			"unsubscribe":"Cancelar inscrição",
+			"subscribe":"Me inscrever",
+			"btn-share":"Compartilhar"
+		},
+
+		
+		"my-volunteers":{
+			"picture":"Foto",
+			"name":"Nome",
+			"email":"Enviar e-mail",
+			"send-to-all":"Enviar e-mail para todos",
+			"subject":"Assunto:",
+			"message":"Mensagem:",
+			"subjectPlaceHolder":"Ex: Novas informações sobre o voluntário",
+			"messagePlaceHolder":"Digite sua mensagem",
+			"send":"Enviar",
+			"close":"Fechar",
+			"btn-send-email":"Enviar email",
+			"to":"Para"
+
+		}
+		
+	}
+
+		
+}

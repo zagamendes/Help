@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script src="js/firebase/firebase-app.js"></script>
+		<script src="js/firebase/firebase-auth.js"></script>
+		<script src="js/firebase/firebase-database.js"></script>
+		<script type="text/javascript" src="js/firebase/firebase-storage.js"></script>
+		<script src="js/firebase/InitFirebase.js"></script>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/mdb.min.js"></script>
+		<script src="js/bootstrap-notify.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js"></script>
+
+		<script type="text/javascript" src="js/Notificacao.js"></script>
+		<script type="text/javascript" src="js/minhasFuncoes.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/mdb.min.css">
+		<link rel="stylesheet" type="text/css" href="css/fa/css/all.css">
+
+  </script>
+	
+</head>
+
+<script type="text/javascript">
+			
+			gostos = {
+				"0":"games,jogos,playstation,microsoft,nintendo,sony,xbox,atari,bgs,e3,gameboy",
+				"1":"geek,anime,cosplay,super-herói,super herói,quadrinho,marvel,dc",
+				"2":"show,música,cultura,festival,festivais,musica, maroon 5,balada, sertanejo, micareta,festa",
+				"3":"esporte,futebol,voley,basquete,natação,futsal,cruzeiro,atletico,brasil,palmeiras",
+				"4":"aula,curso,estudo,ensinar,aulas grátis",
+				"5":"espiritual,religioso,religião,igreja,jesus,deus,católico,cristão",
+				"6":"animais,pets,cachorro,gato",
+				"7":"outros,negócio,empresa,cultura,solidariedade,comunidade,voluntário,criança,idoso,família,tecnologia,empreendedor,empreendedorismo, natureza, meio ambiente, maratona"
+			};
+			var eventos = [];
+
+			function geraTags(){
+				var tags="";
+				var j=0;
+				var tipoEvento = Math.floor(Math.random()*8);
+				var auxTags = gostos[tipoEvento].split(",");
+
+				while(j<5){
+					tags+= auxTags[Math.floor(Math.random()*gostos[tipoEvento].split(",").length)];
+					tags+=",";
+					j++;
+
+
+				}
+				return tags;
+			}
+
+		function defineCategoria(palavra){
+
+				var games = "xbox,playstation,sony,xbox,e3,microsoft,nintendo,atari,cs,lol,league of legends,free fire,rockstar,activision,ea,fifa,atari,bgs";
+				var eventos = "evento,geek,anime,cosplay,série,artista,super-herói,super herói,quadrinho,marvel,dc,bgs,comic-con,ccxp";
+				var shows = "show,música,cultura,festival,festivais,musica,sertanejo,micareta,balada,maroon 5, gustavo lima";
+				var esportes = "esportes,futebol,voley,basquete,neymar,cruziro,atlético,palmeiras";
+				var ensinar = "ensinar,curso,estudo,ensinar,aula,aulas grátis,aulas gratis,professor,curso gratis,curso grátis,aulas";
+				var espiritual = "espiritual,religioso,religião,igreja,jesus,deus,cristão,católico,comunidade";
+				var animais = "animais,animal,pet,pets,cachorros,gatos,cuidados com animais";
+				let objGames ={
+					nome:"games",
+					qtd:0
+				} ;
+				let objEventos = {
+					nome:"eventos-geek",
+					qtd:0
+				};
+				let objShows = {
+					nome:"shows-festivais",
+					qtd:0
+				};
+				let objEsportes = {
+					nome:"esportes",
+					qtd:0
+
+				};
+				let objEnsinar = {
+					nome:"ensinar",
+					qtd:0
+				};
+				let objEspiritual = {
+					nome:"espiritual",
+					qtd:0
+
+				};
+				let objAnimais = {
+					nome:"animais",
+					qtd:0
+
+				};
+				let objOutros = {
+					nome:"outros",
+					qtd:0
+
+				};
+
+				let arrayCategorias = [];
+	
+				palavra = palavra.split(",");
+
+				for(let i=0;i<palavra.length;i++){
+	   
+					var auxTag = ".*"+palavra[i]+".*";
+		
+					var re = new RegExp(auxTag,"gi");
+		
+					if(games.match(re)){
+					
+						objGames.qtd++;
+					
+					}else if(eventos.match(re)){
+
+						objEventos.qtd++;
+					
+					}else if(shows.match(re)){
+					
+						objShows.qtd++;
+					
+					}else if(esportes.match(re)){
+					
+						objEsportes.qtd++;
+					
+					}else if(ensinar.match(re)){
+					
+						objEnsinar.qtd++;
+					
+					}else if(espiritual.match(re)){
+					
+						objEspiritual.qtd++;
+					
+					}else if(animais.match(re)){
+			
+		   				objAnimais.qtd++;
+		
+					}else{
+						objOutros.qtd++;
+					}
+
+				}
+
+			arrayCategorias.push(objGames,objEnsinar,objOutros,objAnimais,objEspiritual,objEsportes,objEventos,objShows);
+
+			let categoria = arrayCategorias.reduce((valor,posicaoAtual)=>
+			{
+				if(posicaoAtual.qtd>valor.qtd){
+					return posicaoAtual;
+				}else{
+					return valor;
+				}
+			
+		
+			},objGames);
+
+			return categoria.nome;
+
+		}
+			
+
+			
+
+			async function geraImagem(evento){
+				var categoria = evento.categoria;
+				console.log("categoria",evento.categoria);
+				if(evento.categoria=="eventos-geek"){
+					categoria = "geek"; 
+				}
+				if(evento.categoria=="shows-festivais"){
+					categoria= "festival";
+				}if(evento.categoria=="games"){
+					categoria="videogame"
+				}
+				var response = await fetch("https://pixabay.com/api/?key=12096086-3f1a466cf8a85bc75b50c5076&orientation=horizontal&per_page="+100+"&lang=pt&q="+categoria);
+				const imagem = await response.json();
+				return new Promise((resolve,reject)=>resolve(imagem.hits[Math.floor(Math.random()*imagem.hits.length)].webformatURL));
+				
+			}
+
+			function defineCidade(){
+				var cidades = ["Patrocínio-Minas Gerais","São Paulo-São Paulo", "Rio de Janeiro-Rio de Janeiro","Curitiba-Paraná","Campinas-São Paulo","Uberlândia-Minas Gerais","Espinosa-Minas Gerais","Patos de Minas-Minas Gerais","Brasília-Distrito Federal","Florianópolis-Santa Catarina","Montes Claros-Minas Gerais","Goiânia-Goiás","Santo André-São Paulo"];
+
+				return cidades[Math.floor(Math.random()*cidades.length)];
+
+			}
+
+			function defineDono(){
+				var donos = ["EAWsKLiLmHYfq0BQRFxSI945xCp2","EF8dDvS6fBffPkNujWmVcfoLYZ13","FM7ZPRBKGaPmf8aBbv2wDA6uyGH3","JtYzXSvDNhPQOsuew8AefUdDAxH2","KZpQS7LSDAhyLPr4V4fRkGOWAX73","LLAgXD435tfaekZbOBfZRaHpHKB2","eREBTLAWISNljWxHMIdep0A3yxv2","hKbMvkZcECarymVIeL3KX11BL3v1","l8JYZecZC8MW3jbYCmPbhCWEISp1","mD0xf41VGfgi50n28tE20giUjPq1","rTOS2qIQKDNM4q7axdLJb0WN9qh1"];
+
+				return donos[Math.floor(Math.random()*donos.length)];
+			}
+
+			function defineTitulo(evento){
+				let categoria ="";
+				if(evento.categoria=="eventos-geek"){
+					categoria = "geek"; 
+				}
+				if(evento.categoria=="shows-festivais"){
+					categoria= "festival";
+				}else{
+					categoria=evento.categoria;
+				}
+				return categoria;
+			}
+
+			function defineDescricao(){
+				descricao = "Essa é uma descrição fictícia de um evento fictício com o intuito de apenas demonstrar como evento real seria, por favor desconsidere esse evento!";
+
+					return descricao;
+			}
+
+			
+				(async function (){
+					for(let i=0; i<50;i++){
+							var evento= {
+								
+								rua:"Rua "+i,
+								numero:i*(i+1),
+								cep:Math.floor(Math.random()*10000),
+								tags:geraTags(),
+								
+								data: new Date(2020,Math.floor(Math.random()*12),Math.floor(Math.random()*31),Math.floor(Math.random()*(22-8+0)+8),Math.floor(Math.random()*60)),
+								
+
+							};
+							evento.categoria=defineCategoria(evento.tags);
+							evento.titulo="Evento "+i;
+							evento.caminho=await geraImagem(evento);
+							evento.idDono = "eREBTLAWISNljWxHMIdep0A3yxv2";
+							evento.cidade= defineCidade();
+							evento.estado = evento.cidade.split("-").pop();
+							evento.cidade = evento.cidade.split("-").shift();
+							evento.descricao = defineDescricao();
+							evento.horario= evento.data.getHours()+":"+evento.data.getMinutes();
+							evento.dataTimestamp = evento.data.getTime();
+							let mes =evento.data.getMonth();
+							mes+=1;
+							evento.data=evento.data.getFullYear()+"-"+mes+"-"+evento.data.getDate();
+							evento.pais = "Brazil";
+							eventos.push(evento);
+
+
+					}
+					eventos.forEach(async evento=>{
+						console.log(evento.data)
+						evento.id = firebase.database().ref("eventos/"+evento.pais+"/"+evento.categoria+"/").push().key;
+						await firebase.database().ref("eventos/"+evento.pais+"/"+evento.categoria+"/"+evento.id).set(evento)
+						
+						await firebase.database().ref("meus-eventos/"+evento.pais+"/eREBTLAWISNljWxHMIdep0A3yxv2/"+evento.categoria+"/"+evento.id).set(evento)
+						
+
+
+
+					});
+				})();
+
+
+			var userGostos = ["games","shows-festivais","eventos-geek"];
+
+			var eventosPraMostar = [];
+
+			
+		 
+			var total=0;
+			/*firebase.database().ref("eventos").once("value")
+			.then(categoorias=>{
+
+				categoorias.forEach(categoria=>{
+					total+=categoria.numChildren();
+				});
+				firebase.database().ref("qtdEventos/total").set(total);
+			})*/;
+			
+
+						
+						
+
+
+
+			
+
+				
+							 
+
+			
+		</script> 
+
+
+	
+	 
+<body>
+		
+		
+
+		
+
+
+</body>
+
+
+</html>

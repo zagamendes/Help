@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+	<title>Bem Vindo - HELP</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Izaac Mendes">
+	<meta name="description" content="Site de cadastros e divulgacões de trabalhos de voluntários.">
+	<meta property="og:description" content="Site de cadastros e divulgacões de trabalhos de voluntários.">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+
+	<script src="js/firebase/firebase-app.js"></script>
+	<script src="js/firebase/firebase-auth.js"></script>
+	<script src="js/firebase/firebase-database.js"></script>
+	<script src="js/firebase/firebase-messaging.js"></script>
+	<script src="js/firebase/firebase-analytics.js"></script>
+	<script src="js/firebase/InitFirebase.js"></script>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+	<script src="js/classes/Notificacao.js"></script>
+	<script src="js/classes/Evento.js"></script>
+	<script src="js/classes/Usuario.js"></script>
+	<script src="js/minhasFuncoes.js"></script>
+
+	<script src="js/eventos/eventos-bem-vindo.js"></script>
+
+	<link rel="image_src" href="img/logo index.png">
+	<link rel="icon" href="img/logo index.png" type="image/x-icon">
+
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/mdb.min.css">
+	<link rel="stylesheet" type="text/css" href="css/fa/css/all.css">
+	<link rel="stylesheet" href="css/navbar.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300&display=swap" rel="stylesheet">
+
+</head>
+<style type="text/css">
+	#saudacoes {
+		font-family: 'Roboto Condensed', Helvetica;
+	}
+
+	.logo {
+		max-width: 70px;
+	}
+</style>
+
+
+
+<body>
+	<nav class="navbar">
+		<img src="img/logo.png" class="img-fluid logo">
+	</nav>
+
+	<img src="img/loading.gif" id="img-loading" class="img-fluid mx-auto d-block">
+
+	<div class="container">
+
+		<div class="row mt-2 pl-2 pr-2">
+			<div id="saudacoes" class="translate" hidden="" data-page="welcome-page" data-key="greetings">seja muito bem
+				vindo a nossa comunidade! Por favor selecione abaixo os tipos de trabalhos voluntários que são do seu
+				interesse para finalizarmos o seu cadastro.</div>
+		</div>
+
+		<!-- SELECIONAR TODOS -->
+		<div class="row pl-2 pr-2">
+			<div class="form-check">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input" id="selecionarTodos">
+					<p class="translate" data-page="welcome-page" data-key="select-all">Selecionar Todos</p>
+				</label>
+			</div>
+		</div>
+
+
+		<!-- ÍCONES GAMES-ESPORTES -->
+		<div class="row pl-1 pr-1" style="margin-top: 20px;">
+			<div class="col-3 col-sm-2 mx-auto">
+				<div class="form-check">
+					<label for="games" class="form-check-label text-center">
+						<input type="checkbox" id="games" class="form-check-input" name="gostos[]" value="games"><img
+							src="img/games.png" class="img-fluid">
+						<p class="translate" data-page="welcome-page" data-key="games">Games</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto">
+				<div class="form-check">
+					<label for="eventos" class="form-check-label text-center">
+						<input type="checkbox" id="eventos" class="form-check-input" name="gostos[]"
+							value="eventos-geek"><img src="img/evento geeks.png" class="img-fluid">
+						<p data-page="welcome-page" data-key="events" class="translate">Eventos Geeks</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto" style="word-break: break-all;">
+				<div class="form-check ">
+					<label class="form-check-label text-center" data-page="welcome-page" data-key="shows">
+						<input id="shows" type="checkbox" class="form-check-input" name="gostos[]"
+							value="shows-festivais"><img src="img/cinema.png" class="img-fluid">
+						<p data-page="welcome-page" data-key="shows" class="translate">Shows/Festivais</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto">
+
+				<div class="form-check">
+					<label for="esportes" class="form-check-label text-center" data-page="welcome-page"
+						data-key="sports">
+						<input id="esportes" type="checkbox" class="form-check-input" name="gostos[]"
+							value="esportes"><img src="img/esportes.png" class="img-fluid">
+						<p data-page="welcome-page" data-key="sports" class="translate">Esportes</p>
+					</label>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- ÍCONES APRENDER-OUTROS -->
+		<div class="row pl-1 pr-1" style="margin-top: 20px;">
+			<div class="col-3 col-sm-2 mx-auto">
+				<div class="form-check">
+					<label for="ensinar" class="form-check-label text-center">
+						<input type="checkbox" class="form-check-input" value="ensinar" name="gostos[]"
+							id="ensinar"><img src="img/aprender.png" class="img-fluid">
+						<p data-page="welcome-page" data-key="teaching" class="translate">Ensinar</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto" style="word-break: break-all;">
+				<div class="form-check">
+					<label for="espiritual" class="form-check-label text-center">
+						<input type="checkbox" id="espiritual" class="form-check-input" name="gostos[]"
+							value="espiritual"><img src="img/religioso.png" class="img-fluid">
+						<p data-page="welcome-page" data-key="spiritual" class="translate">Espiritual/Religioso</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto" style="word-break: break-all;">
+
+				<div class="form-check">
+					<label for="animais" class="form-check-label text-center">
+						<input type="checkbox" id="animais" class="form-check-input" name="gostos[]"
+							value="animais"><img src="img/animais.png" class="img-fluid">
+						<p data-page="welcome-page" data-key="aniamals" class="translate">Animais</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto">
+
+				<div class="form-check">
+					<label for="outros" class="form-check-label text-center">
+						<input type="checkbox" id="outros" class="form-check-input" name="gostos[]" value="outros"><img
+							src="img/outros.png" class="img-fluid">
+						<p data-page="welcome-page" data-key="others" class="translate">Outros</p>
+					</label>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- BOTÕES -->
+		<div class="row mt-1">
+			<div class="mx-auto">
+				<button id="btn-salvar"
+					class="btn btn-outline-primary btn-lg font-weight-bold text-uppercase btn-cadastro">
+					<span class="fas fa-check-circle"></span> <span class="translate" data-page="welcome-page"
+						data-key="btn-save">Salvar</span>
+				</button>
+				<button id="btn-sair" onclick="logOut()"
+					class="btn btn-outline-danger btn-lg font-weight-bold text-uppercase btn-cadastro">
+					<span class="translate" data-page="welcome-page" data-key="btn-logOut">SAIR</span> <span
+						class="fas fa-sign-out-alt"></span>
+				</button>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="myModal" data-backdrop="static">
+
+			<div class="modal-dialog modal-dialog-centered">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<p class="modal-title translate" data-key="alert-message" data-page="welcome-page">Atenção! Para
+							finalizarmos o seu cadastro, precisamos da sua localização. Ela é essencial para o uso da
+							plataforma! Por favor clique no botão abaixo para permitir acesso a sua localização.</p>
+					</div>
+
+					<div class="modal-body">
+						<div class="row">
+							<div class="mx-auto">
+								<button class="btn btn-primary text-uppercase font-weight-bold btn-permissoes"
+									id="btn-permitir" style="padding-left: 20px; padding-right: 20px;"
+									onclick="pegaPaisUser()">
+									<span class="fas fa-check-circle"></span> <span class="translate" data-key="allow"
+										data-page="welcome-page">Permitir</span>
+								</button>
+								<button class="btn btn-danger text-uppercase font-weight-bold btn-permissoes"
+									id="btn-sair" onclick="logOut()">
+									<span class="fas fa-sign-out-alt"></span> <span class="translate"
+										data-key="btn-logOut" data-page="welcome-page">Sair</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div> <!-- MODAL CONTENT -->
+
+			</div> <!-- MODAL DIALOG -->
+
+		</div> <!-- MY MODAL -->
+
+	</div>
+
+
+</body>
+
+</html>

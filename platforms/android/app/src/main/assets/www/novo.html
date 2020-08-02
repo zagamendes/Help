@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+	<title>Cadastro de Evento - HELP</title>
+
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+
+	<!--BIBLIOTECAS FIREBASE  -->
+	<script src="js/firebase/firebase-app.js"></script>
+	<script src="js/firebase/firebase-auth.js"></script>
+	<script src="js/firebase/firebase-storage.js"></script>
+	<script src="js/firebase/firebase-database.js"></script>
+	<script src="js/firebase/firebase-analytics.js"></script>
+	<script src="js/firebase/InitFirebase.js"></script>
+
+	<!-- JQUERY/BOOTSRAP JS/NOTIFICATIONS JS/JQUERY TAGS -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins/jquery-mask/jquery.mask.js"></script>
+	<script src="js/popper.min.js"></script>
+
+	<script src="js/plugins/tags-autocomplete/jquery.tagsinput-revisited.js"></script>
+	<script src="js/plugins/tags-autocomplete/jquery-ui.min.js"></script>
+	<script src="js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+	<script src="js/classes/Notificacao.js"></script>
+	<script src="js/classes/Evento.js"></script>
+	<script src="js/minhasFuncoes.js"></script>
+	<script src="js/eventos/eventos-cadastro-evento.js"></script>
+
+	<!-- BOOTSRAP CSS/NOTIFICATIONS/JQUERY TAGS -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/fa/css/all.css">
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" href="css/novo.css">
+
+
+</head>
+
+<body>
+
+	<nav class="navbar">
+		<span class="fas fa-chevron-circle-left mt-1" id="btn-voltar" ></span>
+		<img src="img/logo.png" class="img-fluid logo">
+	</nav>
+
+	<img src="img/loading.gif" id="img-loading" class="img-fluid mx-auto d-block">
+
+	<div class="container" hidden="">
+		<legend class="translate text-center text-capitalize" data-page="register-event-page" data-key="register-headline">Cadastro de evento</legend>
+
+		<form id="form-evento">
+
+			<!-- ROW INPUTS -->
+			<div class="row">
+				<!-- TITULO -->
+				<div class="col-6 form-group">
+					<label for="input-titulo" class="translate" data-page="register-event-page"
+						data-key="title">Titulo:</label>
+					<input type="text" name="titulo" id="input-titulo" class="form-control translate-input"
+						data-key="titlePlaceHolder" data-page="register-event-page" required
+						placeholder="Ex: Dia de banho">
+					<input type="hidden" name="" id="input-id">
+				</div>
+
+				<!-- TAGSS -->
+				<div class="col-6 form-group">
+
+					<!-- TOAST -->
+					<div class="toast" data-autohide="false" style="position: absolute;">
+						<div class="toast-header" >
+							<p class="translate" data-page="register-event-page" data-key="toast-info"></p>
+							<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+						</div>
+					</div>
+
+					<label>Tags:</label>
+					<input type="text" id="input-tags" class="form-control translate-input"
+						data-page="register-event-page" data-key="tagsPlaceHolder">
+				</div>
+
+				<!-- DESCRIÇÃO -->
+				<div class="col-12 form-group">
+					<label for="input-descricao" class="translate" data-page="register-event-page"
+						data-key="description">Descrição:</label>
+					<textarea id="input-descricao" name="descricao" rows="5"
+						placeholder="Este é um exemplo de sugestão de como deveria ser a descrição do seu evento. Por favor considere uma descrição clara e de tamanho razoável para que o seu público alvo possa saber sobre o que realmente se trata seu evento."
+						data-page="register-event-page" class="form-control translate-input"
+						data-key="descriptionPlaceHolder" required rows="10"></textarea>
+				</div>
+
+				<!-- CEP -->
+				<div class="col-6 form-group">
+					<label class="translate" data-page="register-event-page" data-key="zipCode"
+						placeholder="00.000-000">CEP:</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+						</div>
+						<input type="tel" id="input-cep" required="" data-page="register-event-page"
+							class="form-control translate-input" data-key="zipPlaceHolder">
+					</div>
+				</div>
+
+
+				<!-- NÚMERO -->
+				<div class="col-6 form-group">
+					<label class="translate" data-page="register-event-page" data-key="number">Número:</label>
+					<input type="tel" id="input-numero" required="" data-page="register-event-page"
+						class="form-control translate-input" data-key="numberPlaceHolder">
+				</div>
+
+				<!-- RUA -->
+				<div class="col-6 form-group">
+					<label class="translate" data-page="register-event-page" data-key="street">Rua:</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text "><i class="fas fa-road"></i></span>
+						</div>
+						<input type="text" id="input-rua" required="" data-page="register-event-page"
+							class="form-control translate-input" data-key="streetPlaceHolder" placeholder="">
+					</div>
+				</div>
+
+
+				<!-- CIDADE-ESTADO -->
+				<div class="col-6 form-group">
+					<label class="translate" data-page="register-event-page" data-key="city-state">Cidade-Estado</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text "><i class="fas fa-city"></i></span>
+						</div>
+						<input type="text" id="input-cidade" required="" data-page="register-event-page"
+							class="form-control translate-input" data-key="cityPlaceHolder" placeholder="">
+					</div>
+				</div>
+
+
+				<!-- DATA -->
+				<div class="col-6 form-group">
+
+					<label for="input-data">Data:</label>
+
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text fas fa-calendar"></span>
+						</div>
+						<input type="date" id="input-data" required="" data-page="register-event-page"
+							class="form-control translate-input" data-key="dataPlaceHolder">
+					</div>
+
+				</div>
+
+				<!-- HORÁRIO -->
+				<div class="col-6 form-group">
+					<label for="input-horario" class="translate" data-page="register-event-page"
+						data-key="time">Horário:</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text fas fa-clock"></span>
+						</div>
+						<input type="time" name="horario" id="input-horario" data-page="register-event-page" required
+							class="form-control translate-input" data-key="timePlaceHolder">
+					</div>
+				</div>
+
+				<!-- FOTO -->
+				<div class="col-6 form-group">
+					<label class="btn btn-primary btn-block btn-foto">
+						<span class="fas fa-camera"></span>
+						<span class="translate text-uppercase font-weight-bold" data-page="register-event-page"
+							data-key="select-picture">Selecionar Foto</span>
+						<input type="file" name="" id="input-foto" data-teste="dasda"
+							style="position: absolute; width: 1px; z-index: -1">
+						<input type="hidden" name="" id="input-pais">
+					</label>
+				</div>
+
+				<!-- BARRA PROGRESSO -->
+				<div class="col-6 form-group">
+					<progress value="" id="barra-progresso" max="100" class="progress btn-block"
+						style="height:80%;"></progress>
+				</div>
+
+
+			</div>
+
+			<!-- ROW BOTÕES -->
+			<div class="row mb-3">
+
+				<!-- BOTÃO SALVAR -->
+				<div class="col-6">
+					<button type="submit" class="btn btn-success btn-block text-uppercase font-weight-bold"
+						id="btn-cadastrar-evento"><span class="fas fa-check-circle"></span> <span class="translate"
+							data-page="register-event-page" data-key="btn-save">Salvar</span> </button>
+				</div>
+
+				<!-- BOTÃO CANCELAR -->
+				<div class="col-6">
+					<button type="button" class="btn btn-danger btn-block text-uppercase font-weight-bold"
+						id="btn-cancelar"><span class="fas fa-times"></span> <span class="translate"
+							data-page="register-event-page" data-key="btn-cancel">Cancelar</span> </button>
+				</div>
+				<input type="hidden" id="input-caminho" name="">
+			</div> <!--FECHA ROW BOTÕES-->
+
+		</form>
+
+
+	</div> <!--FECHA CONTAINER-->
+
+</body>
+
+</html>

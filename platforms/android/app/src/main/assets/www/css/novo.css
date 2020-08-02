@@ -1,0 +1,32 @@
+.btn-success{
+    padding: 12px 0;
+}
+.btn-danger{
+    padding: 12px 0;
+}
+.logo{
+    max-width: 80px;
+}
+.navbar{
+    position: relative;
+}
+
+.btn-foto{
+    text-transform: uppercase;
+}
+
+.ui-autocomplete{
+    overflow-y: auto;
+    max-height: 100px !important;
+}
+.toast{
+    max-width: 320px;
+    margin-top: -30px;
+}
+.tagsinput{
+    padding: 0;
+    
+}
+#input-tags_tag{
+    margin: 0;
+}

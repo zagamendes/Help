@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+	<title>HELP</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	<meta name="author" content="Izaac Mendes">
+	<meta name="description" content="Site de cadastros e divulgacões de trabalhos de voluntários.">
+	<meta property="og:description" content="Site de cadastros e divulgacões de trabalhos de voluntários.">
+	
+	<script src="js/firebase/firebase-app.js"></script>
+	<script src="js/firebase/firebase-auth.js"></script>
+	<script src="js/firebase/firebase-database.js"></script>
+	<script src="js/firebase/firebase-analytics.js"></script>
+	<script src="js/firebase/InitFirebase.js"></script>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/minhasFuncoes.js"></script>
+	<script src="js/eventos/eventos-index.js"></script>
+	
+	<link rel="image_src" href="img/logo index.png">
+	<link rel="icon" href="img/logo index.png" type="image/x-icon">
+	<link rel="stylesheet" href="css/firebase-ui-auth.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/fa/css/all.css">
+	<link rel="stylesheet" href="css/index.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300&display=swap" rel="stylesheet"> -->
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="row row-index-logo">
+			<img src="img/logo index.png" class="img-fluid d-block mx-auto">
+
+			<div class="col-12">
+				<button
+					class="btn btn-success btn-block text-uppercase font-weight-bold text-center mt-4 btn-index-entrar translate"
+					data-page="index-page" data-key="btn-sign-in" data-toggle="modal" data-target="#myModal"
+					data-backdrop="static">Entrar / Registar-se</button>
+			</div>
+
+			<div class="col-12">
+				<a href="sobre.html">
+					<button class="btn btn-primary btn-block text-uppercase font-weight-bold text-center mt-4 btn-index-sobre translate"
+						data-page="index-page" data-key="btn-about-us" data-toggle="modal" data-target="#myModal">
+						Sobre nós
+					</button>
+				</a>
+			</div>
+		</div>
+
+		<div class="modal fade" id="myModal">
+
+			<div class="modal-dialog modal-dialog-centered">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h5 class="modal-title translate" data-page="index-page" data-key="welcome-message">Bem vindo ao
+							Help, por favor escolha um modo de login ou registro abaixo:</h5>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<div class="modal-body">
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger text-uppercase font-weight-bold translate"
+							data-key="btn-close" data-page="index-page" data-dismiss="modal">
+							fechar
+						</button>
+					</div>
+
+				</div> <!-- MODAL CONTENT -->
+
+			</div> <!-- MODAL DIALOG -->
+
+		</div> <!-- MY MODAL -->
+
+	</div> <!-- CONTAINER -->
+</body>
+
+</html>

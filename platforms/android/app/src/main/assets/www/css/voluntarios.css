@@ -1,0 +1,8 @@
+.modal-title {
+  overflow-y: auto;
+  max-height: 100px;
+}
+
+.rounded-circle {
+  max-width: 80px !important;
+}

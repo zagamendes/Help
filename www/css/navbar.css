@@ -1,0 +1,35 @@
+.logo{
+	max-width: 90px;
+	margin:0 auto;
+	display: block;
+}
+
+#btn-voltar{
+	position:absolute;
+	font-size: 2.5em;
+	color: black;  
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+	color: white;
+	left: 50px;
+	cursor: pointer !important;
+
+}
+
+.navbar{
+	position: sticky;
+	top: 0;
+	z-index: 10000;
+	background: #60B8FF;
+}
+.not-found{
+	max-width: 300px;
+}
+
+
+@media screen and (max-width: 767px){
+	#btn-voltar{
+		left: 25px;
+	}
+}

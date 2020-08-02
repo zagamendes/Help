@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+	<title>Meus Interesses - HELP</title>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+
+	<script src="js/firebase/firebase-app.js"></script>
+	<script src="js/firebase/firebase-auth.js"></script>
+	<script src="js/firebase/firebase-database.js"></script>
+	<script src="js/firebase/firebase-analytics.js"></script>
+	<script src="js/firebase/InitFirebase.js"></script>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+
+	<script src="js/classes/Notificacao.js"></script>
+	<script src="js/classes/Usuario.js"></script>
+	<script src="js/minhasFuncoes.js"></script>
+	<script src="js/eventos/eventos-interesses.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/mdb.min.css">
+	<link rel="stylesheet" type="text/css" href="css/fa/css/all.css">
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" href="style.css" href="css/interesses.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300&display=swap" rel="stylesheet">
+
+</head>
+
+
+
+
+<body>
+	<nav class="navbar">
+		<span class="fas fa-chevron-circle-left mt-1" id="btn-voltar" onclick="location.replace('painelusuario.html')"></span>
+		<img src="img/logo.png" class="img-fluid logo">
+	</nav>
+	<img src="img/loading.gif" id="img-loading" class="img-fluid mx-auto">
+
+	<div class="container">
+
+		<legend hidden="">
+			<h2 class="translate" data-key="myinterests" data-page="my-interests-page">Meus Interesses</h2>
+		</legend>
+
+		<div class="row">
+			<div class="form-check">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input" id="selecionarTodos">
+					<p class="translate" data-page="my-interests-page" data-key="select-all">Selecionar Todos</p>
+				</label>
+			</div>
+		</div> <!--FECHA ROW-->
+
+
+		<!-- ÍCONES GAMES-ESPORTES -->
+		<div class="row " style="margin-top: 20px;">
+			<div class="col-3 col-sm-2 mx-auto">
+				<div class="form-check">
+					<label for="games" class="form-check-label text-center">
+						<input type="checkbox" id="games" class="form-check-input" name="gostos[]" value="games"><img
+							src="img/games.png" class="img-fluid">
+						<p class="translate" data-page="my-interests-page" data-key="games">Games</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto">
+				<div class="form-check">
+					<label for="eventos" class="form-check-label text-center">
+						<input type="checkbox" id="eventos" class="form-check-input" name="gostos[]"
+							value="eventos-geek"><img src="img/evento geeks.png" class="img-fluid">
+						<p data-page="my-interests-page" data-key="events" class="translate">Eventos Geeks</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto " style="word-break: break-all;">
+				<div class="form-check ">
+					<label class="form-check-label text-center" data-page="my-interests-page" data-key="shows">
+						<input id="shows" type="checkbox" class="form-check-input" name="gostos[]"
+							value="shows-festivais"><img src="img/cinema.png" class="img-fluid">
+						<p data-page="my-interests-page" data-key="shows" class="translate">Shows/Festivais</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto ">
+
+				<div class="form-check">
+					<label for="esportes" class="form-check-label text-center" data-page="my-interests-page"
+						data-key="sports">
+						<input id="esportes" type="checkbox" class="form-check-input" name="gostos[]"
+							value="esportes"><img src="img/esportes.png" class="img-fluid">
+						<p data-page="my-interests-page" data-key="sports" class="translate">Esportes</p>
+					</label>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- ÍCONES APRENDER-OUTROS -->
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-3 col-sm-2 mx-auto mx-auto ">
+				<div class="form-check">
+					<label for="ensinar" class="form-check-label text-center">
+						<input type="checkbox" class="form-check-input" value="ensinar" name="gostos[]"
+							id="ensinar"><img src="img/aprender.png" class="img-fluid">
+						<p data-page="my-interests-page" data-key="teaching" class="translate">Ensinar</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto " style="word-break: break-all;">
+				<div class="form-check">
+					<label for="espiritual" class="form-check-label text-center">
+						<input type="checkbox" id="espiritual" class="form-check-input" name="gostos[]"
+							value="espiritual"><img src="img/religioso.png" class="img-fluid">
+						<p data-page="my-interests-page" data-key="spiritual" class="translate">Espiritual/Religioso</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto" style="word-break: break-all;">
+
+				<div class="form-check">
+					<label for="animais" class="form-check-label text-center">
+						<input type="checkbox" id="animais" class="form-check-input" name="gostos[]"
+							value="animais"><img src="img/animais.png" class="img-fluid">
+						<p data-page="my-interests-page" data-key="aniamals" class="translate">Animais</p>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-3 col-sm-2 mx-auto">
+
+				<div class="form-check">
+					<label for="outros" class="form-check-label text-center">
+						<input type="checkbox" id="outros" class="form-check-input" name="gostos[]" value="outros"><img
+							src="img/outros.png" class="img-fluid">
+						<p data-page="my-interests-page" data-key="others" class="translate">Outros</p>
+					</label>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- BOTÕES -->
+		<div class="row mt-3">
+			<div class="mx-auto">
+				<button id="btn-salvar" class="btn btn-lg btn-outline-primary font-weight-bold text-uppercase">
+					<span class="fas fa-check-circle"></span> <span class="translate" data-page="my-interests-page"
+						data-key="btn-save">Salvar</span>
+				</button>
+
+				<button id="btn-sair" class="btn btn-lg btn-outline-danger font-weight-bold text-uppercase">
+					<span class="fas fa-arrow-circle-left"></span> <span class="translate" data-page="my-interests-page"
+						data-key="btn-cancel">VOLTAR</span>
+				</button>
+			</div>
+		</div>
+
+
+	</div> <!--FECHA CONTAINER-->
+
+
+</body>
+
+</html>

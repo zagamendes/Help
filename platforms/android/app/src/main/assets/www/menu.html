@@ -1,0 +1,209 @@
+<html lang="pt-BR">
+
+<head>
+	<title>Painel de Controle - HELP</title>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+	
+	<script src="js/firebase/firebase-app.js"></script>
+	<script src="js/firebase/firebase-auth.js"></script>
+	<script src="js/firebase/firebase-database.js"></script>
+	<script src="js/firebase/firebase-analytics.js"></script>
+	<script src="js/firebase/InitFirebase.js"></script>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+	<script src="js/classes/Notificacao.js"></script>
+	<script src="js/minhasFuncoes.js"></script>
+	<script src="js/eventos/eventos-tela-principal.js"></script>
+	<script src="js/smtp.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/fa/css/all.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/navbar.css">
+	<link rel="stylesheet" href="css/menu.css">
+
+
+</head>
+
+
+<body>
+	<nav class="navbar">
+		<img src="img/logo.png" class="img-fluid logo">
+	</nav>
+	<div class="container">
+
+		<div class="carousel slide" id="painel" data-ride="carousel" data-interval="false" data-wrap="false">
+			
+			<a class="carousel-control-prev indicadores" href="#painel" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+
+			<a class="carousel-control-next indicadores" href="#painel" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+
+			<ul class="carousel-indicators" style="bottom: 0;">
+				<li data-target="#painel" data-slide-to="0" class="active"></li>
+				<li data-target="#painel" data-slide-to="1"></li>
+			</ul>
+
+			<div class="carousel-inner">
+
+				<!-- NOVOS EVENTOS,REGISTRAR EVENTO, MEUS EVENTOS, EVENTOS INSCRITOS -->
+				<div class="carousel-item active">
+
+					<div class="row mt-4 icone-principal">
+
+						<div class="col-5 col-md-4 col-lg-2  mx-auto ">
+							<a href="eventos.html">
+								<img src="img/calendar.png" class="img-fluid">
+								<p data-key="upcoming-events" data-page="mainscreen-page"
+									class="mx-auto  translate texto-icone">Próximos Eventos</p>
+							</a>
+						</div>
+
+
+						<div class="col-5 col-md-4 col-lg-2  mx-auto ">
+							<a href="novo.html">
+								<img src="img/add-calendar-symbol-for-events.png" class="img-fluid">
+								<p data-key="register-event" data-page="mainscreen-page"
+									class=" mx-auto translate texto-icone">Cadastrar Evento</p>
+							</a>
+						</div>
+					</div>
+
+					<div class="row mt-4 icone-principal">
+						<div class="col-5 col-md-4 col-lg-2 4 mx-auto">
+							<a href="listagem.html">
+								<img src="img/brochure.png" class="img-fluid">
+								<p data-key="my-events" data-page="mainscreen-page"
+									class="text-center mx-auto translate texto-icone">Meus Eventos</p>
+							</a>
+						</div>
+
+						<div class="col-5 col-md-4 col-lg-2  mx-auto ">
+							<a href="inscritos.html">
+								<img src="img/event.png" class="img-fluid">
+								<p data-key="events-subscribed" data-page="mainscreen-page"
+									class="mx-auto translate texto-icone">Eventos que Estou Inscrito</p>
+							</a>
+						</div>
+					</div>
+
+				</div> <!--FECHA CAROUSEL ITEM NOVOS EVENTOS, CADASTRAR EVENTO, MEUS EVENTOS, EVENTOS INSCRITOS-->
+
+				<!-- MEU PERFIL,SOBRE,REPORTAR ERRO, LOG OUT -->
+				<div class="carousel-item">
+
+					<div class="row mt-4">
+
+						<div class="col-5 col-md-4 col-lg-2  mx-auto">
+							<a href="painelusuario.html">
+								<img src="img/user2.png" class="img-fluid">
+								<p data-key="my-profile" data-page="mainscreen-page"
+									class="mx-auto text-prevent translate texto-icone">Meu Perfil</p>
+							</a>
+						</div>
+
+						<div class="col-5 col-md-4 col-lg-2  mx-auto">
+							<a href="sobre.html">
+								<img src="img/info.png" class="img-fluid">
+								<p data-key="about-app" data-page="mainscreen-page"
+									class="mx-auto translate texto-icone" style="max-width: 120px">Sobre o App
+								</p>
+							</a>
+						</div>
+					</div>
+
+					<div class="row mt-4">
+
+
+						<div class="col-5 col-md-4 col-lg-2  mx-auto" data-target="#myModal" data-toggle="modal"
+							style="cursor: pointer;">
+							<img src="img/warning.png" class="img-fluid">
+							<p data-key="report-error" data-page="mainscreen-page"
+								class="mx-auto text-center translate texto-icone ml-4" style="max-width: 120px;">
+								Reportar Erro
+							</p>
+						</div>
+
+						<div class="col-5 col-md-4 col-lg-2  mx-auto" id="btn-sair" style="cursor: pointer;"
+							onclick="logOut()">
+							<img src="img/logout.png" class="img-fluid">
+							<p data-key="logout" data-page="mainscreen-page"
+								class="mx-auto text-center translate texto-icone ml-4" style="max-width: 120px"> Sair
+							</p>
+						</div>
+
+					</div>
+
+
+
+				</div> <!--FECHA CAROUSEL-ITEM PERFIL,SOBRE REPORTAR ERRO E LOG OUT-->
+			
+			</div> <!--FECHA CAROUSEL INNER-->
+
+		</div> <!--FECHA CAROUSEL-->
+
+
+
+		<div class="modal fade" id="myModal">
+
+			<div class="modal-dialog modal-dialog-centered">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title text-break translate" data-page="mainscreen-page" data-key="modal-headline"></h3>
+						<input type="hidden" name="" id="input-para" value="">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+					</div>
+					<form>
+						<div class="modal-body">
+							<div class="form-group">
+								<label><strong data-key="subject" class="translate"
+										data-page="mainscreen-page">Assunto:</strong></label>
+								<input type="text" name="" id="input-assunto" required="" data-page="mainscreen-page"
+									data-key="subjectPlaceHolder" class="form-control translate-input"
+									placeholder="Assunto da Mensagem">
+							</div>
+
+							<div class="form-group">
+								<label><strong class="translate" data-key="message"
+										data-page="mainscreen-page">Mensagem:</strong></label>
+								<textarea class="form-control translate-input" data-page="mainscreen-page" rows="5"
+									id="input-mensagem" required="" data-key="messagePlaceHolder"
+									placeholder="Descreva o erro com o máximo de detalhes possível."></textarea>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<button type="submit" id="btn-enviar"
+								class="btn btn-success text-uppercase font-weight-bold">
+								<span class="fas fa-paper-plane"></span> <span data-key="send"
+									data-page="mainscreen-page" class="translate">Enviar</span>
+							</button>
+							<button type="button" class="btn btn-danger text-uppercase font-weight-bold"
+								data-dismiss="modal">
+								<span class="fas fa-times"></span> <span data-key="cancel" data-page="mainscreen-page"
+									class="translate">Fechar</span>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div> <!--FECHA MODAL-->
+
+
+	</div> <!--FECHA CONTAINER-->
+</body>
+
+</html>
