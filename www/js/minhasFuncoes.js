@@ -24,23 +24,38 @@ const rootRef = firebase.database().ref();
 
 async function defineLanguage() {
 	try {
-		let response = await fetch("js/languages.json");
-		let languages = await response.json();
+		
+		if(sessionStorage.linguas){
 
-		objLanguage = languages;
+			log("Ja buscou uma vez no banco");
+			objLanguage = JSON.parse(sessionStorage.linguas);
+			log(objLanguage);
+
+		}else{
+			log("Buscando pela primeira vez no banco");
+
+			let languages = await rootRef.child("linguas").once("value");
+			sessionStorage.linguas = JSON.stringify(languages.val());
+			objLanguage = JSON.parse(sessionStorage.linguas);
+
+		}
+		
+		
+
+		
 
 		//SE O JSON TIVER O IDOMA DO NAVEGADOR, TRADUZ TUDO NO IDIOMA, SE NÃO TRADUZ EM INGLÊS
 		if (objLanguage[language]) {
 			$(".translate").each(function (i) {
 				$(this).text(
-					languages[language][$(this).data("page")][$(this).data("key")]
+					objLanguage[language][$(this).data("page")][$(this).data("key")]
 				);
 			});
 
 			$(".translate-input").each(function () {
 				$(this).attr(
 					"placeholder",
-					languages[language][$(this).data("page")][$(this).data("key")]
+					objLanguage[language][$(this).data("page")][$(this).data("key")]
 				);
 			});
 
@@ -48,7 +63,7 @@ async function defineLanguage() {
 
 			$(".icone-translate").each(function () {
 				$(this).text(
-					languages[language][$(this).data("page")]["icones"][
+					objLanguage[language][$(this).data("page")]["icones"][
 					$(this).data("key")
 					]
 				);
@@ -57,14 +72,14 @@ async function defineLanguage() {
 
 			$(".translate").each(function (i) {
 				$(this).text(
-					languages["en"][$(this).data("page")][$(this).data("key")]
+					objLanguage["en"][$(this).data("page")][$(this).data("key")]
 				);
 			});
 
 			$(".translate-input").each(function () {
 				$(this).attr(
 					"placeholder",
-					languages["en"][$(this).data("page")][$(this).data("key")]
+					objLanguage["en"][$(this).data("page")][$(this).data("key")]
 				);
 			});
 
@@ -72,12 +87,13 @@ async function defineLanguage() {
 
 			$(".icone-translate").each(function () {
 				$(this).text(
-					languages["en"][$(this).data("page")]["icones"][$(this).data("key")]
+					objLanguage["en"][$(this).data("page")]["icones"][$(this).data("key")]
 				);
 			});
 		}
 	} catch (error) {
 		console.log(error);
+
 	}
 }
 
@@ -97,7 +113,6 @@ function limparCampos() {
 	$("#barra-progresso").val(0);
 	$("#btn-cadastrar-evento").removeAttr("disabled");
 
-
 	$("#input-tags")
 		.val()
 		.split(",")
@@ -106,35 +121,31 @@ function limparCampos() {
 		});
 }
 
-async function defineCategoria(palavra,tagsDB) {
-	
-	let match= false;
+async function defineCategoria(palavra, tagsDB) {
+	let match = false;
 
 	let games, eventos, shows, esportes, ensinar, espiritual, animais;
 	if (tagsDB) {
-		games = tagsDB.val().games.toString()
-		eventos = tagsDB.val()["eventos-geek"].toString()
-		shows = tagsDB.val()["shows-festivais"].toString()
-		esportes = tagsDB.val().esportes.toString()
-		ensinar = tagsDB.val().ensinar.toString()
-		espiritual = tagsDB.val().espiritual.toString()
-		animais = tagsDB.val().animais.toString()
-	}else{
+		games = tagsDB.val().games.toString();
+		eventos = tagsDB.val()["eventos-geek"].toString();
+		shows = tagsDB.val()["shows-festivais"].toString();
+		esportes = tagsDB.val().esportes.toString();
+		ensinar = tagsDB.val().ensinar.toString();
+		espiritual = tagsDB.val().espiritual.toString();
+		animais = tagsDB.val().animais.toString();
+	} else {
 		let tagsDB = await rootRef.child(`tags/${usuario.pais}`).once("value");
-		if(tagsDB.val()){
-
-			games = tagsDB.val().games.toString()
-			eventos = tagsDB.val()["eventos-geek"].toString()
-			shows = tagsDB.val()["shows-festivais"].toString()
-			esportes = tagsDB.val().esportes.toString()
-			ensinar = tagsDB.val().ensinar.toString()
-			espiritual = tagsDB.val().espiritual.toString()
-			animais = tagsDB.val().animais.toString()
-
-		}else{
+		if (tagsDB.val()) {
+			games = tagsDB.val().games.toString();
+			eventos = tagsDB.val()["eventos-geek"].toString();
+			shows = tagsDB.val()["shows-festivais"].toString();
+			esportes = tagsDB.val().esportes.toString();
+			ensinar = tagsDB.val().ensinar.toString();
+			espiritual = tagsDB.val().espiritual.toString();
+			animais = tagsDB.val().animais.toString();
+		} else {
 			return false;
 		}
-		
 	}
 
 	let objGames = {
@@ -172,13 +183,11 @@ async function defineCategoria(palavra,tagsDB) {
 
 	let arrayCategorias = [];
 
-
 	//RECEBE UMA STRING COM A LISTA DE TAGS SEPERADAS POR ",". GERO UM ARRAY DESSA STRING
 	palavra = palavra.split(",");
 
-	//OLHO PALAVRA POR PALAVRA E COMPARO SE ESSA PALAVRA É REFERENTE HÁ ALGUMA DAS CATEGORIAS 
-	palavra.forEach(auxPalavra=>{
-
+	//OLHO PALAVRA POR PALAVRA E COMPARO SE ESSA PALAVRA É REFERENTE HÁ ALGUMA DAS CATEGORIAS
+	palavra.forEach((auxPalavra) => {
 		//STRING DE EXPRESSÃO REGULAR SEMELHANTE AO ILIKE DO SQL
 		var auxTag = ".*" + auxPalavra + ".*";
 
@@ -212,15 +221,10 @@ async function defineCategoria(palavra,tagsDB) {
 			objAnimais.qtd++;
 			match = true;
 		}
-		if(match==false) {
+		if (match == false) {
 			objOutros.qtd++;
 		}
-
-	})
-		
-
-		
-	
+	});
 
 	arrayCategorias.push(
 		objGames,
@@ -249,8 +253,11 @@ async function buscarEvento(palavra) {
 	let categoria = await defineCategoria(palavra);
 
 	//BUSCO NO BANCO EVENTOS APENAS NA CATEGORIA DEFINIDA
-	categoria ? await EventoDAO.buscaEventoPorPalavra(categoria, palavra) : Notificacao.alerta(objLanguage["en"]["notifications"]["no-country-support"]);
-	
+	categoria
+		? await EventoDAO.buscaEventoPorPalavra(categoria, palavra)
+		: Notificacao.alerta(
+			objLanguage["en"]["notifications"]["no-country-support"]
+		);
 }
 
 function sleep(ms) {
@@ -379,7 +386,6 @@ function numeroDeIcones2() {
 	return qtdIcones;
 }
 
-
 function criaLista(evento, novaCategoria, inscrito) {
 	let botaoLerMais = "";
 	let descricao = "";
@@ -389,7 +395,11 @@ function criaLista(evento, novaCategoria, inscrito) {
 	let auxData = evento.data.split("-");
 
 	//CRIA UM OBJETO DATE FORMATADO BASEADO NA REGIÃO DO DISPOSITIVO
-	const data = new Date(auxData[0], auxData[1], auxData[2]).toLocaleDateString();
+	const data = new Date(
+		auxData[0],
+		auxData[1],
+		auxData[2]
+	).toLocaleDateString();
 	if (inscrito) {
 		botaoInscrito = `<button id='${evento.id}' data-estado='${evento.estado}' data-cidade='${evento.cidade}' data-pais='${evento.pais}' 
 		data-dono='${evento.idDono}' data-titulo='${evento.titulo}' data-rua='${evento.rua}' data-horario='${evento.horario}' data-data='${evento.data}'
@@ -409,14 +419,14 @@ function criaLista(evento, novaCategoria, inscrito) {
 		</button>`;
 	}
 	//BOTAO COM AS INFORMAÇÕES DO EVENTO PARA ENVIAR PARA A PAGINA EVENTO
-	botaoLerMais = `<a href=evento.html?id=${evento.id}&categoria=${evento.categoria}&pais=${evento.pais}&cidade=${evento.cidade} 
+	botaoLerMais = `<a href=https://apptcc-6f556.web.app/evento?id=${evento.id}&categoria=${evento.categoria}&pais=${evento.pais}&cidade=${evento.cidade} 
 			class='btn btn-info btn-ler-mais text-uppercase font-weight-bold z-depth-1'>
 			<span class='fas fa-info-circle'></span> <span class='translate' data-page='events-page' data-key='btn-read-more'>Ler Mais</span>  
 		</a>`;
 
 	descricao = `<p class='card-text'>${evento.descricao.substr(0, 140)}...</p>`;
 
-	//ENDERENCO TEM OS ÍCONES 
+	//ENDERENCO TEM OS ÍCONES
 	endereco = `<p class='card-text'><span class='fas fa-map-marker-alt' style='color:red'></span> ${evento.cidade}</p>`;
 	endereco += `<p class='card-text'><span class='fas fa-calendar' style='color:red'></span> ${data}</p>`;
 
@@ -524,7 +534,9 @@ function criaCardEventoInscrito(evento) {
 	let url = encodeURIComponent(
 		`https://apptcc-6f556.firebaseapp.com/evento?id=${evento.id}&categoria=${evento.categoria}&pais=${evento.pais}&cidade=${evento.cidade}`
 	);
-	const card = `<div id="${evento.id}" class="col-sm-12 col-md-6 col-lg-6 col-xl-4" >
+	const card = `<div id="${
+		evento.id
+		}" class="col-sm-12 col-md-6 col-lg-6 col-xl-4" >
 						<div class=card>
 							<img src='${evento.caminho}' class='card-img-top'>
 							<div class="card-body">
@@ -534,16 +546,28 @@ function criaCardEventoInscrito(evento) {
 									<p class="card-text">
 										${evento.descricao.substr(0, 140)}...
 										<p><span class="fas fa-clock"></span> ${evento.horario}</p>
-										<p><span class="fas fa-calendar"></span> ${new Date(evento.data.replace(/-/g, ",")).toLocaleDateString()}</p>
+										<p><span class="fas fa-calendar"></span> ${new Date(
+			evento.data.replace(/-/g, ",")
+		).toLocaleDateString()}</p>
 										<p><span class="fas fa-building"></span> ${evento.rua}</p>
-										<p><span class="fas fa-map-marker-alt"></span> ${evento.cidade}-${evento.estado}</p>
+										<p><span class="fas fa-map-marker-alt"></span> ${evento.cidade}-${
+		evento.estado
+		}</p>
 									</p>
 								</p>
 								<div class='row'>
 									<div class='col-6'>
 										<button id='${evento.id}' 
-											data-cidade='${evento.cidade}' data-descricao='${evento.descricao}' data-pais='${evento.pais}' data-dono='${evento.idDono}' data-titulo='${evento.titulo}' data-estado='${evento.estado}'
-											data-caminho='${evento.caminho}' data-rua='${evento.rua}' data-horario='${evento.horario}' data-categoria='${evento.categoria}' data-data='${evento.data}' value='${evento.id}' 
+											data-cidade='${evento.cidade}' data-descricao='${
+		evento.descricao
+		}' data-pais='${evento.pais}' data-dono='${evento.idDono}' data-titulo='${
+		evento.titulo
+		}' data-estado='${evento.estado}'
+											data-caminho='${evento.caminho}' data-rua='${evento.rua}' data-horario='${
+		evento.horario
+		}' data-categoria='${evento.categoria}' data-data='${evento.data}' value='${
+		evento.id
+		}' 
 											class='btn btn-danger btn-subscribe text-uppercase font-weight-bold'>
 												<p>
 													<span class='fas fa-user-times'></span> <span class='translate' data-page='events-subscribed-page' data-key='unsubscribe'>Cancelar inscrição</span> 
@@ -566,27 +590,28 @@ function criaCardEventoInscrito(evento) {
 	$("#row-events-subscribed").append(card);
 }
 
-//PRIMEIRO PARÂMETRO REFERENTE A PÁGINA BEM VINDO E SEGUNDO REFERENTE A INDEX 
+//PRIMEIRO PARÂMETRO REFERENTE A PÁGINA BEM VINDO E SEGUNDO REFERENTE A INDEX
 function isLogged(pagina, index) {
 	if (pagina) {
 		//CASO LS.UID SEJA NULLO, USUÁRIO TENTOU ACESSAR A URL IMPROPRIAMENTE
 		if (!localStorage.uid) {
 			//VERIFICO SE O USUÁRIO ESTÁ LOGADO, SE SIM, REDIRECIONO PARA TELA PRINCIPAL, CASO CONTRÁRIO, TELA DE LOGIN
-			localStorage.user ? location.replace("menu.html") : location.replace("index.html");
+			localStorage.user
+				? location.replace("menu.html")
+				: location.replace("index.html");
 		}
 	} else {
-
 		//SE INDEX FOR TRUE, USUÁRIO ACESSOU A PÁGINA INDEX, SE INDEX FOR FALSO, USUÁRIO TENTOU ACESSAR QUALQUER PÁGINA
 		if (index) {
-
 			//SE USER ESTÁ LOGADO MANDO PARA TELA PRINCIPAL
-			localStorage.user ? location.replace("menu.html") : console.log("Não logado");
-
-
+			localStorage.user
+				? location.replace("menu.html")
+				: console.log("Não logado");
 		} else {
-
 			//SE TENTOU ACESSAR QUALQUER PÁGINA SEM ESTAR LOGADO, MANDA PARA INDEX, SE NÃO, NÃO FAZ NADA
-			!localStorage.user ? location.replace("index.html") : console.log("logado");
+			!localStorage.user
+				? location.replace("index.html")
+				: console.log("logado");
 		}
 	}
 }
@@ -637,8 +662,8 @@ function trataErros(erro) {
 	) {
 		//CASO O IDIOMA DO DISPOSITIVO ESTEJA NA LISTA DE TRADUÇÕES IMPRIME MENSAGEM DE ERRO NO IDIOMA DO DISPOSITIVO, SE NÃO IMPRIME EM INGLÊS
 		objLanguage[language]
-			? Notificacao.erro(objLanguage[language]["errors"][erro.code])
-			: Notificacao.erro(objLanguage["en"]["errors"][erro.code]);
+			? Notificacao.erro(objLanguage[language]["errors"][erro.code.replace("/","-")])
+			: Notificacao.erro(objLanguage["en"]["errors"][erro.code.replace("/","-")]);
 		log(erro);
 	} else {
 		Notificacao.erro(erro);
@@ -653,7 +678,6 @@ function ativaBotoes() {
 
 function desativaBotoes() {
 	$("#btn-cadastrar-evento").attr("disabled", "disabled");
-	
 }
 
 function addSpinner() {

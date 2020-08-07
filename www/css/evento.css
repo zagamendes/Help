@@ -1,0 +1,93 @@
+.barra-pesquisa{
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    max-width: inherit;
+    margin-left: -15px; 
+    background: #60B8FF; 
+    top: 0; 
+    height: 60px;
+
+}
+#btn-voltar{
+    position:absolute;
+    font-size: 2em;
+    color: white;  
+    left: 10px; 
+    top: 10px; 
+    z-index: 10;
+    cursor: pointer!important;
+}
+.container{
+    background: #f4f4f4;
+    margin-top: 80px;
+
+}
+
+
+label{
+    color: white!important;
+}
+
+p{
+    margin-bottom: 0;
+}
+  
+.btn-danger{
+    padding: 15px 5px;
+}
+.not-found{
+    max-width: 300px;
+}        
+@media screen and (max-width:1199px) {
+    .barra-icones{
+        padding-left: 5%;
+    }
+    .btn-danger{
+        padding: 5px 5px;
+    }
+    .btn-success{
+        padding: 12px;
+    }
+    
+}
+
+@media screen and (max-width:990px) {
+    .barra-icones{
+        padding-left: 0;
+    }
+	.btn-danger{
+		padding: 14px 5px;
+	}
+	
+}
+@media screen and (max-width:498px) {
+	.btn-danger{
+		padding: 5px 5px;
+	}
+	
+}
+@media screen and (max-width:434px) {
+	.btn-info{
+		padding: 13px;
+	}
+	
+}
+@media screen and (max-width:414px) {
+	.btn-success,.btn-primary{
+		padding:13px;
+	}
+	
+}
+@media screen and (max-width:375px) {
+	.btn-success,.btn-primary{
+		padding:10px;
+	}
+	
+}
+@media screen and (max-width:320px) {
+	.btn-success{
+		padding:13px;
+	}
+	
+}

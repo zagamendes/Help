@@ -74,7 +74,7 @@ $(document).ready(async function () {
 					data: $(this).data("data"),
 					horario: $(this).data("horario"),
 					rua: $(this).data("rua")
-
+				
 				};
 				//ADICIONA ICONE DE LOADING NO BOTÃO ENQUANTO INSCRIÇÃO/CANCELAMENTO ESTAR SENDO FEITO
 				$(this).prepend(addSpinner());

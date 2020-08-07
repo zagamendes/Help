@@ -337,7 +337,7 @@ function getEvento(pais, categoria, id) {
 
 app.get("/evento", (req, res) => {
 
-
+	
 
 	getEvento(req.query.pais, req.query.categoria, req.query.id)
 		.then(evento => {

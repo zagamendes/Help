@@ -786,25 +786,25 @@ class EventoDAO {
 
 				if (inscrito.val()) {
 
-					botaoInscrito = `<button id='${evento.id}' data-estado='${evento.estado}' data-cidade='${evento.cidade}' data-pais='${evento.pais}' 
-					data-dono='${evento.idDono}' data-titulo='${evento.titulo}' data-caminho='${evento.caminho}' data-categoria='${evento.categoria}'
+					botaoInscrito = `<button id='${evento.id}' data-pais='${evento.pais}' data-estado='${evento.estado}' data-cidade='${evento.cidade}'   data-rua='${evento.rua}'
+					data-dono='${evento.idDono}' data-horario='${evento.horario}' data-data='${evento.data}' data-descricao='${evento.descricao}' data-titulo='${evento.titulo}' data-caminho='${evento.caminho}' data-categoria='${evento.categoria}'
 					value='${evento.id}' class='btn btn-subscribe btn-danger text-uppercase font-weight-bold'>
 						<p> <span class='fas fa-user-times'></span> <span class='translate' data-key='unsubscribe' data-page='event-page'>Cancelar inscrição</span> </p>
 					</button>`;
 
 				} else {
 
-					botaoInscrito = `<button id='${evento.id}' data-estado='${evento.estado}' data-cidade='${evento.cidade}' data-pais='${evento.pais}' data-dono='${evento.idDono}' 
-					data-titulo='${evento.titulo}' data-caminho='${evento.caminho}' data-categoria='${evento.categoria}' value='${evento.id}'
-					 
-					class='btn btn-success text-uppercase font-weight-bold btn-subscribe'>
-						<p> <span class='fas fa-user-plus'> <span class='translate' data-key='subscribe' data-page='event-page'>Me inscrever</span> </span></p>
+					botaoInscrito = `<button id='${evento.id}' data-pais='${evento.pais}' data-estado='${evento.estado}' data-cidade='${evento.cidade}'  data-rua='${evento.rua}'  
+					data-dono='${evento.idDono}' data-horario='${evento.horario}' data-data='${evento.data}' data-descricao='${evento.descricao}' data-titulo='${evento.titulo}' data-caminho='${evento.caminho}' 
+					data-categoria='${evento.categoria}' value='${evento.id}' class='btn btn-subscribe  btn-success text-uppercase font-weight-bold '>			 
+					
+						<p> <span class='fas fa-user-plus'></span> <span class='translate' data-key='subscribe' data-page='event-page'>Me inscrever</span></p>
 					</button>`;
 
 				}
 
 				endereco = `<p class='card-text'><span class='fas fa-map-marker-alt' style='color:red'></span> ${evento.cidade}-${evento.estado}</p>`;
-				endereco += `<p class='card-text'><span class='fas fa-building style='color:red'></span> ${evento.rua}, Nº${evento.numero}, ${evento.cep}</p>`;
+				endereco += `<p class='card-text'><span class='fas fa-building' style='color:red'></span> ${evento.rua}, Nº${evento.numero}, ${evento.cep}</p>`;
 				endereco += `<p class='card-text'><span class='fas fa-clock' style='color:red'></span> ${evento.horario}</p>`;
 				endereco += `<p class='card-text'><span class='fas fa-calendar' style='color:red'></span> ${data}</p>`;
 

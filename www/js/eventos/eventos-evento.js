@@ -13,7 +13,7 @@ $(document).ready(async function () {
 
 
 		await EventoDAO.listaPorId();
-
+		defineLanguage();
 		if (language == "en") {
 			$(".btn-success").css({
 				"padding-left": "25px",
@@ -46,15 +46,9 @@ $(document).ready(async function () {
 
 
 			} else if (usuario.pais != evento.pais) {
-				if (language == "pt") {
-					Notificacao.alerta("Desculpe! Você não pode se inscrever em um evento de outro pais!");
-				} else {
-					if (objLanguage[language]) {
-						Notificacao.alerta(objLanguage[language]["notifications"]["not-allowed-to-subscribe"])
-					} else {
-						Notificacao.alerta(objLanguage["en"]["notifications"]["not-allowed-to-subscribe"]);
-					}
-				}
+				
+				objLanguage[language] ? Notificacao.alerta(objLanguage[language]["notifications"]["not-allowed-to-subscribe"]) : Notificacao.alerta(objLanguage["en"]["notifications"]["not-allowed-to-subscribe"]);
+				
 
 			} else {
 
@@ -66,38 +60,18 @@ $(document).ready(async function () {
 					await EventoDAO.unsubscribe(evento);
 					$(this).removeClass("btn-danger");
 					$(this).addClass("btn-success");
-					if (language == "pt") {
-
-						$(this).html("<p><span class='fas fa-user-plus'></span> Me inscrever </p>");
-
-					} else {
-						if (objLanguage[language]) {
-
-							$(this).html(objLanguage[language]["subscribed"]["subscribe"]);
-
-						} else {
-							$(this).html(objLanguage[language]["subscribed"]["subscribe"]);
-						}
-					}
+					
+					objLanguage[language] ? $(this).html(objLanguage[language]["subscribed"]["subscribe"]) : $(this).html(objLanguage[language]["subscribed"]["subscribe"]);
+						
 
 				} else {
 
 					await EventoDAO.subscribeToEvent(evento);
 					$(this).addClass("btn-danger");
 					$(this).removeClass("btn-success");
-					if (language == "pt") {
+					
+					objLanguage[language] ? $(this).html(objLanguage[language]["subscribed"]["unsubscribe"]) : $(this).html(objLanguage['en']["subscribed"]["unsubscribe"]);
 
-						$(this).html("<p><span class='fas fa-user-times'></span> Cancelar inscrição</p>");
-
-					} else {
-						if (objLanguage[language]) {
-
-							$(this).html(objLanguage[language]["subscribed"]["unsubscribe"]);
-
-						} else {
-							$(this).html(objLanguage['en']["subscribed"]["unsubscribe"]);
-						}
-					}
 
 				}
 			}

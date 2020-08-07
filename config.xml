@@ -9,15 +9,10 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <allow-navigation href="*" />
+    <allow-navigation href="https://apptcc-6f556.firebaseapp.com/*" /> 
+    <allow-intent href="https://www.facebook.com/*" /> 
+    
     <universal-links>
-        
         <host name="apptcc-6f556.firebaseapp.com" scheme="https">
             <path url="/__/auth/callback"/>
         </host>
@@ -27,6 +22,7 @@
         <preference name="AndroidLaunchMode" value="singleTask" />
         <preference name="android-minSdkVersion" value="19" />
         <preference name="android-targetSdkVersion" value="19"/>
+        <!-- <resource-file src="google-services.json" target="app/google-services.json" /> -->
         <splash src="www/img/logo index.png"/>
         <allow-intent href="market:*" />
     </platform>

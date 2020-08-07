@@ -164,10 +164,10 @@
 		},
 		
 		"errors":{
-			"storage/canceled":"Download canceled by the user.",
-			"storage/retry-limit-exceeded":"Limit exceeded! Make sure your device is connected to internet and try again.",
+			"storage-canceled":"Download canceled by the user.",
+			"storage-retry-limit-exceeded":"Limit exceeded! Make sure your device is connected to internet and try again.",
 			"PERMISSION_DENIED":"You don't have access to the database.",
-			"storage/object-not-found":"It was not possible to delete the picture because it was not found in the database"
+			"storage-object-not-found":"It was not possible to delete the picture because it was not found in the database"
 		},
 
 		"events-subscribed-page":{
@@ -364,11 +364,11 @@
 		},
 		
 		"errors":{
-			"storage/unauthorized":"Você não tem permissão para poder deletar esse evento",
-			"storage/canceled":"Download cancelado pelo usuário",
-			"storage/retry-limit-exceeded":"Limite excedido! Certifique-se que o dispositivo estaja com acesso a internet.",
+			"storage-unauthorized":"Você não tem permissão para poder deletar esse evento",
+			"storage-canceled":"Download cancelado pelo usuário",
+			"storage-retry-limit-exceeded":"Limite excedido! Certifique-se que o dispositivo estaja com acesso a internet.",
 			"PERMISSION_DENIED":"Você não tem acesso ao banco de dados.",
-			"storage/object-not-found":"Não foi possível excluir o evento porque a foto não foi encontrada no nosso servidor. Por favor relate esse erro para nossa equipe."
+			"storage-object-not-found":"Não foi possível excluir o evento porque a foto não foi encontrada no nosso servidor. Por favor relate esse erro para nossa equipe."
 		},
 
 		"events-subscribed-page":{
