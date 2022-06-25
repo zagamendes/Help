@@ -36,6 +36,6 @@
     "cordova-universal-links-plugin-fix": "^1.2.1",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   }
 }
